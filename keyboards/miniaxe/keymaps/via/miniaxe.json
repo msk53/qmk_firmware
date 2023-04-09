@@ -1,6 +1,6 @@
 {
 	"name":"MiniAxe",
-	"vendorId":"0xFEED",
+	"vendorId":"0xBEEF",
 	"productId":"0x3939",
 	"lighting":"none",
 	"matrix":{"rows":8,"cols":5},
