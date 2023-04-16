@@ -4,6 +4,28 @@
 	"productId":"0x3939",
 	"lighting":"none",
 	"matrix":{"rows":8,"cols":5},
+	"customKeycodes": [
+		{
+			"name": "QWERTY",
+			"title": "Layer0",
+			"shortName": "QWERTY"
+		},
+		{
+			"name": "LOWER",
+			"title": "Layer1",
+			"shortName": "LOWER"
+		},
+		{
+			"name": "RAISE",
+			"title": "Layer2",
+			"shortName": "RAISE"
+		},
+		{
+			"name": "ADJUST",
+			"title": "Layer3",
+			"shortName": "ADJUST"
+		}
+	],
 	"layouts":{
 		"keymap":[
 			[
