@@ -1,5 +1,5 @@
 {
-	"name":"MiniAxe",
+	"name":"MiniAxe(VIA/Remap)",
 	"vendorId":"0xBEEF",
 	"productId":"0x3939",
 	"lighting":"none",
@@ -7,22 +7,22 @@
 	"customKeycodes": [
 		{
 			"name": "QWERTY",
-			"title": "Layer0",
+			"title": "Layer(0)",
 			"shortName": "QWERTY"
 		},
 		{
 			"name": "LOWER",
-			"title": "Layer1",
+			"title": "Layer(1)",
 			"shortName": "LOWER"
 		},
 		{
 			"name": "RAISE",
-			"title": "Layer2",
+			"title": "Layer(2)",
 			"shortName": "RAISE"
 		},
 		{
 			"name": "ADJUST",
-			"title": "Layer3",
+			"title": "Layer(3), LOWER + RAISE",
 			"shortName": "ADJUST"
 		}
 	],
