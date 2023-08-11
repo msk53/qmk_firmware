@@ -24,7 +24,7 @@ info.jsonから作成した。
 - #777777 for accents
     - ホームポジション
 ### customKeycodes
-既存のcustom_keycodesを、VIA/Remapのカスタムキーで選択可能にした
+既存のcustom_keycodesを、VIA/Remapのカスタムキーで選択可能にした。 
 ```c
 enum custom_keycodes {
   QWERTY = USER00, // SAFE_RANGE,
@@ -33,6 +33,10 @@ enum custom_keycodes {
   ADJUST,
 };
 ```
-
+VIA/Remapのカスタムキーは、VIA有効時のみ使用可能な定数USER00～USER15で定義されている。  
+VIA V12 protocol以降はQK_KB_0～QK_KB_31に変更が必要。  
+こちらはVIAが無効でも使用可能。  
+ref. VIA Protocol 12 + fixes #19916
+https://github.com/qmk/qmk_firmware/pull/19916
 
 
