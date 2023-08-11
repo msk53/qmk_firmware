@@ -16,9 +16,19 @@
 #include QMK_KEYBOARD_H
 #include "keymap_japanese.h"
 
+// NICOLA親指シフト
+#include "nicola.h"
+NGKEYS nicola_keys;
+// NICOLA親指シフト
+
 // Defines the keycodes used by our macros in process_record_user
 enum layer_names {
     _QWERTY,
+
+// NICOLA親指シフト
+    _NICOLA, // NICOLA親指シフト入力レイヤー
+// NICOLA親指シフト
+
     _LOWER,
     _RAISE,
     _ADJUST
@@ -29,6 +39,11 @@ enum custom_keycodes {
   LOWER,
   RAISE,
   ADJUST,
+
+// NICOLA親指シフト
+  NICOLA_OFF,  // OFF
+  NICOLA_ON, // ON
+// NICOLA親指シフト
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -51,6 +66,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   JP_Z,    JP_X,    JP_C,    JP_V,    JP_B,         JP_N,    JP_M,    JP_COMM, JP_DOT,  JP_SLSH,
                     KC_LGUI, LOWER, MT(MOD_LCTL, KC_ESC),   MT(MOD_LSFT, KC_SPC), RAISE, MT(MOD_LALT, KC_BSPC)
 ),
+// NICOLA親指シフト
+// デフォルトレイヤーに関係なくQWERTYで
+[_NICOLA] = LAYOUT_split_3x5_3(
+  NG_Q,    NG_W,    NG_E,    NG_R,    NG_T,         NG_Y,    NG_U,    NG_I,    NG_O,    NG_P,
+  NG_A,    NG_S,    NG_D,    NG_F,    NG_G,         NG_H,    NG_J,    NG_K,    NG_L,    NG_SCLN,
+  NG_Z,    NG_X,    NG_C,    NG_V,    NG_B,         NG_N,    NG_M,    NG_COMM, NG_DOT,  NG_SLSH,
+                    _______, KC_TRNS, NG_SHFTL,     NG_SHFTR,KC_TRNS, _______
+),
+// NICOLA親指シフト
 
 /* Raise
  *
@@ -68,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   JP_EXLM, JP_AT,   JP_HASH, JP_DLR,  JP_PERC,      JP_CIRC, JP_AMPR, JP_ASTR, JP_LPRN, JP_RPRN,
   KC_TAB,  JP_UNDS, JP_PLUS, JP_PIPE, JP_TILD,      JP_COLN, JP_DQUO, JP_RABK, JP_LCBR, JP_RCBR,
   JP_EISU, JP_MINS, JP_EQL,  JP_BSLS, JP_GRV,       JP_SCLN, JP_QUOT, JP_LABK, JP_LBRC, JP_RBRC,
-                    _______, KC_TRNS, _______,      _______, KC_TRNS, _______
+                    _______, KC_TRNS, NICOLA_OFF,   _______, KC_TRNS, _______
 ),
 
 /* Lower
@@ -84,10 +108,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *               `--------------------'           `--------------------'
  */
 [_LOWER] = LAYOUT_split_3x5_3(
-  JP_1,    JP_2,    JP_3,    JP_4,    JP_5,         JP_6,    JP_7,    JP_8,    JP_9,    JP_0,
-  KC_TAB,  _______, _______, _______, _______,     KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_ENT,
-  KC_LCTL, JP_ZKHK, KC_LGUI, KC_LALT, KC_DEL,      KC_BSPC, KC_PGUP, KC_PGDN, KC_BSLS, KC_QUOT,
-                    _______, KC_TRNS, _______,     _______, KC_TRNS, _______
+  JP_1,    JP_2,    JP_3,    JP_4,    JP_5,         JP_6,     JP_7,    JP_8,    JP_9,    JP_0,
+  KC_TAB,  _______, _______, _______, _______,     KC_LEFT,  KC_DOWN, KC_UP,   KC_RGHT, KC_ENT,
+  KC_LCTL, JP_ZKHK, KC_LGUI, KC_LALT, KC_DEL,      KC_BSPC,  KC_PGUP, KC_PGDN, KC_BSLS, KC_QUOT,
+                    _______, KC_TRNS, _______,     NICOLA_ON,KC_TRNS, _______
 ),
 
 
@@ -110,6 +134,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                     _______, KC_TRNS, _______,      _______, KC_TRNS, _______
 )
 };
+
+void matrix_init_user(void) {
+  // NICOLA親指シフト
+  set_nicola(_NICOLA);
+  // NICOLA親指シフト
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
@@ -148,6 +178,36 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
+
+    // NICOLA親指シフト
+    case NICOLA_OFF:
+      if (record->event.pressed) {
+        send_string(SS_TAP(X_MHEN)); // Win
+        send_string(SS_TAP(X_LANG2)); // Mac
+        nicola_off();
+      }
+      return false;
+      break;
+    case NICOLA_ON:
+      if (record->event.pressed) {
+        // NICOLA親指シフト
+        send_string(SS_TAP(X_HENK)); // Win
+        send_string(SS_TAP(X_LANG1)); // Mac
+        nicola_on();
+      }
+      return false;
+      break;
+    // NICOLA親指シフト
   }
+
+  // NICOLA親指シフト
+  bool a = true;
+  if (nicola_state()) {
+    nicola_mode(keycode, record);
+    a = process_nicola(keycode, record);
+  }
+  if (a == false) return false;
+  // NICOLA親指シフト
+
   return true;
 }
