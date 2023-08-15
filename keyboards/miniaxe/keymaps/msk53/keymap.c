@@ -182,17 +182,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // NICOLA親指シフト
     case NICOLA_OFF:
       if (record->event.pressed) {
-        send_string(SS_TAP(X_MHEN)); // Win
-        send_string(SS_TAP(X_LANG2)); // Mac
+        //send_string(SS_TAP(X_MHEN)); // Win10以前
+        send_string(SS_TAP(X_LANG2)); // Mac, Win11以降
         nicola_off();
       }
       return false;
       break;
     case NICOLA_ON:
       if (record->event.pressed) {
-        // NICOLA親指シフト
-        send_string(SS_TAP(X_HENK)); // Win
-        send_string(SS_TAP(X_LANG1)); // Mac
+        //send_string(SS_TAP(X_HENK)); // Win10以前
+        send_string(SS_TAP(X_LANG1)); // Mac, Win11以降
         nicola_on();
       }
       return false;
