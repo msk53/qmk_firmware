@@ -90,14 +90,19 @@ bool nicola_state(void) {
 void nicola_clear(void) {
   nicola_int_state = NICOLA_STATE_S1_INIT;
   key_process_guard = 0;
+  n_modifier = 0;
 }
 
+// QMK 0.19以降に追加変更されたMODIFIER判定マクロ
+#define IS_QK_MOD_TAP(code) ((code) >= QK_MOD_TAP && (code) <= QK_MOD_TAP_MAX)
+#define IS_MODIFIER_KEYCODE(code) IS_MOD(code)
 // 入力モードか編集モードかを確認する
 void nicola_mode(uint16_t keycode, keyrecord_t *record) {
   if (!is_nicola) return;
 
   // modifierが押されたらレイヤーをオフ
-  switch (keycode) {
+  if (IS_MODIFIER_KEYCODE(keycode) || IS_QK_MOD_TAP(keycode)) {
+/*  switch (keycode) {
     case KC_LCTRL:
     case KC_LSHIFT:
     case KC_LALT:
@@ -105,19 +110,19 @@ void nicola_mode(uint16_t keycode, keyrecord_t *record) {
     case KC_RCTRL:
     case KC_RSHIFT:
     case KC_RALT:
-    case KC_RGUI:
+    case KC_RGUI:   */
       if (record->event.pressed) {
-        if(n_modifier == 0) {
+        if(n_modifier >= 0) {
           layer_off(nicola_layer);
         }
         n_modifier++;
       } else {
         n_modifier--;
-        if (n_modifier == 0) {
+        if (n_modifier <= 0) {
           layer_on(nicola_layer);
         }
       }
-      break;
+//      break;
   }
 
 }
