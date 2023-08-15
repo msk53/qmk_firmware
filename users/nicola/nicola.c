@@ -129,6 +129,25 @@ void nicola_mode(uint16_t keycode, keyrecord_t *record) {
 
 #define SS_ALNUM(x) SS_TAP(X_CAPSLOCK) x SS_TAP(X_CAPSLOCK)
 
+// Pキー押下時、設定に応じて読点「，」「、」を送る関数
+void send_string_comma(void) {
+#ifdef NICOLA_FUZZY_PUNCTUATION
+    // 30%キーボードの場合、LEFT_BRACKETキーがないので
+    // Pキーで読点「、」を入力するようにする
+    return send_string("," );   // あいまいな読点「、」
+#else
+    return send_string(SS_ALNUM(SS_TAP(X_COMMA))); // ，
+#endif
+}
+// Zキー押下時、設定に応じて句点「．」「。」を送る関数
+void send_string_dot(void) {
+#ifdef NICOLA_FUZZY_PUNCTUATION //
+    return send_string("." );   // あいまいな句点「。」
+#else
+    return send_string(SS_ALNUM(SS_TAP(X_DOT))); // ．
+#endif
+}
+
 void nicola_m_type(void) {
     switch(nicola_m_key) {
         case NG_1   : send_string("1" ); break;
@@ -153,7 +172,7 @@ void nicola_m_type(void) {
         case NG_U   : send_string("ti"); break;
         case NG_I   : send_string("ku"); break;
         case NG_O   : send_string("tu"); break;
-        case NG_P   : send_string(SS_ALNUM(SS_TAP(X_COMMA))); break; // ，
+        case NG_P   : send_string_comma(); break; // ，
         case NG_LBRC: send_string("," ); break;
         case NG_RBRC: send_string(";" ); break;
         case NG_BSLS: send_string(SS_ALNUM(SS_TAP(X_INT1))); break;
@@ -170,7 +189,7 @@ void nicola_m_type(void) {
         case NG_SCLN: send_string("nn"); break;
         case NG_QUOT: send_string(SS_TAP(X_BSPACE)); break;
 
-        case NG_Z   : send_string(SS_ALNUM(SS_TAP(X_DOT))); break; // ，
+        case NG_Z   : send_string_dot(); break; // ．
         case NG_X   : send_string("hi"); break;
         case NG_C   : send_string("su"); break;
         case NG_V   : send_string("hu"); break;
