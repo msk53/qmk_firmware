@@ -14,7 +14,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include QMK_KEYBOARD_H
-#include "keymap_japanese.h"
 
 // NICOLA親指シフト
 #include "nicola.h"
@@ -26,7 +25,7 @@ enum layer_names {
     _QWERTY,
 
 // NICOLA親指シフト
-    _NICOLA, // NICOLA親指シフト入力レイヤー
+  _NICOLA, // NICOLA親指シフト入力レイヤー
 // NICOLA親指シフト
 
     _LOWER,
@@ -35,14 +34,14 @@ enum layer_names {
 };
 
 enum custom_keycodes {
-  QWERTY = USER00,
+  QWERTY = NG_SAFE_RANGE,
   LOWER,
   RAISE,
   ADJUST,
 
 // NICOLA親指シフト
-  NG_OFF,   // Layer OFF
-  NG_ON,    // Layer ON
+  KC_EISU,  // OFF
+  KC_KANA2, // ON
 // NICOLA親指シフト
 };
 
@@ -61,9 +60,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *               `--------------------'           `--------------------'
  */
 [_QWERTY] = LAYOUT_split_3x5_3(
-  JP_Q,    JP_W,    JP_E,    JP_R,    JP_T,         JP_Y,    JP_U,    JP_I,    JP_O,    JP_P,
-  JP_A,    JP_S,    JP_D,    JP_F,    JP_G,         JP_H,    JP_J,    JP_K,    JP_L,    JP_SCLN,
-  JP_Z,    JP_X,    JP_C,    JP_V,    JP_B,         JP_N,    JP_M,    JP_COMM, JP_DOT,  JP_SLSH,
+  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
+  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,         KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN,
+  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,         KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,
                     KC_LGUI, LOWER, MT(MOD_LCTL, KC_ESC),   MT(MOD_LSFT, KC_SPC), RAISE, MT(MOD_LALT, KC_BSPC)
 ),
 // NICOLA親指シフト
@@ -72,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   NG_Q,    NG_W,    NG_E,    NG_R,    NG_T,         NG_Y,    NG_U,    NG_I,    NG_O,    NG_P,
   NG_A,    NG_S,    NG_D,    NG_F,    NG_G,         NG_H,    NG_J,    NG_K,    NG_L,    NG_SCLN,
   NG_Z,    NG_X,    NG_C,    NG_V,    NG_B,         NG_N,    NG_M,    NG_COMM, NG_DOT,  NG_SLSH,
-                    _______, KC_TRNS, NG_SHFTL,     NG_SHFTR,KC_TRNS, _______
+                    _______, _______,NG_SHFTL,      NG_SHFTR,_______, _______
 ),
 // NICOLA親指シフト
 
@@ -83,16 +82,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |  Tab |   _  |   +  |  |   |  ~   |           |   :  |   "  |   >  |   {  |   }  |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |  Eisū|   -  |   =  |  \   |  `   |           |   ;  |   '  |   <  |   [  |   ]  |
+ * |  Caps|   -  |   =  |  \   |  `   |           |   ;  |   '  |   <  |   [  |   ]  |
  * `-------------+------+------+------|           |------+------+------+------+------'
  *               |      | LOWER|      |           |  Esc | RAISE|      |
  *               `--------------------'           `--------------------'
  */
 [_RAISE] = LAYOUT_split_3x5_3(
-  JP_EXLM, JP_AT,   JP_HASH, JP_DLR,  JP_PERC,      JP_CIRC, JP_AMPR, JP_ASTR, JP_LPRN, JP_RPRN,
-  KC_TAB,  JP_UNDS, JP_PLUS, JP_PIPE, JP_TILD,      JP_COLN, JP_DQUO, JP_RABK, JP_LCBR, JP_RCBR,
-  JP_EISU, JP_MINS, JP_EQL,  JP_BSLS, JP_GRV,       JP_SCLN, JP_QUOT, JP_LABK, JP_LBRC, JP_RBRC,
-                    _______, KC_TRNS, NG_OFF,       _______, KC_TRNS, _______
+  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,
+  KC_TAB,  KC_UNDS, KC_PLUS, KC_PIPE, KC_TILD,      KC_COLN, KC_DQUO, KC_GT,   KC_LCBR, KC_RCBR,
+  KC_CAPS, KC_MINS, KC_EQL,  KC_BSLS, KC_GRV,       KC_SCLN, KC_QUOT, KC_LT,   KC_LBRC, KC_RBRC,
+                    _______, _______, KC_EISU,      _______, _______, _______
 ),
 
 /* Lower
@@ -102,16 +101,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |  Tab |      |      |      |      |           | Left | Down |  Up  | Right| Enter|
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |  Ctrl|  Z↔H |  GUI |  Alt | Del  |           | BkSp | PgUp | PgDn |   \  |   '  |
+ * |  Ctrl|   `  |  GUI |  Alt | Del  |           | BkSp | PgUp | PgDn |   \  |   '  |
  * `-------------+------+------+------|           |------+------+------+------+------'
  *               |      | LOWER|      |           |      | RAISE|      |
  *               `--------------------'           `--------------------'
  */
 [_LOWER] = LAYOUT_split_3x5_3(
-  JP_1,    JP_2,    JP_3,    JP_4,    JP_5,         JP_6,     JP_7,    JP_8,    JP_9,    JP_0,
-  KC_TAB,  _______, _______, _______, _______,     KC_LEFT,  KC_DOWN, KC_UP,   KC_RGHT, KC_ENT,
-  KC_LCTL, JP_ZKHK, KC_LGUI, KC_LALT, KC_DEL,      KC_BSPC,  KC_PGUP, KC_PGDN, KC_BSLS, KC_QUOT,
-                    _______, KC_TRNS, _______,     NG_ON,    KC_TRNS, _______
+  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,         KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
+  KC_TAB,  _______, _______, _______, _______,     KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_ENT,
+  KC_LCTL, KC_GRV,  KC_LGUI, KC_LALT, KC_DEL,      KC_BSPC, KC_PGUP, KC_PGDN, KC_BSLS, KC_QUOT,
+                    _______, _______, _______,     KC_KANA2,_______, _______
 ),
 
 
@@ -131,7 +130,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,        KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,
   KC_F11,  KC_F12,  _______, _______, _______,      _______, _______, _______, _______, _______,
   QK_BOOT, _______, _______, _______, _______,      KC_MPRV, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY,
-                    _______, KC_TRNS, _______,      _______, KC_TRNS, _______
+                    _______, _______, _______,      _______, _______, _______
 )
 };
 
@@ -180,18 +179,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
 
     // NICOLA親指シフト
-    case NG_OFF:
+    case KC_EISU:
       if (record->event.pressed) {
-        //send_string(SS_TAP(X_MHEN)); // Win10以前
-        send_string(SS_TAP(X_LANG2)); // Mac, Win11以降
+        send_string(SS_TAP(X_MHEN)); // Win
+        send_string(SS_TAP(X_LANG2)); // Mac
         nicola_off();
       }
       return false;
       break;
-    case NG_ON:
+    case KC_KANA2:
       if (record->event.pressed) {
-        //send_string(SS_TAP(X_HENK)); // Win10以前
-        send_string(SS_TAP(X_LANG1)); // Mac, Win11以降
+        // NICOLA親指シフト
+        send_string(SS_TAP(X_HENK)); // Win
+        send_string(SS_TAP(X_LANG1)); // Mac
         nicola_on();
       }
       return false;
