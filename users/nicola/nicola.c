@@ -17,6 +17,11 @@
  * introduced NICOLA state machine
  * (C) 2020 Sadao Ikebe @bonyarou
  */
+/*
+ * (C) 2023 msk53
+ * - あいまいな句読点"NICOLA_FUZZY_PUNCTUATION"の追加
+ * - Hold/TapのHoldに指定したModifierに対応
+ */
 
 #include QMK_KEYBOARD_H
 #include "nicola.h"

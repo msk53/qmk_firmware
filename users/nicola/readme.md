@@ -8,6 +8,21 @@ Copyright 2020 Sadao Ikebe
 ## 配列例
 ![Layout](layout.png "Layout")
 
+## あいまいな句読点 ※msk53追加の機能
+Copyright 2023 msk53
+
+```#define NICOLA_FUZZY_PUNCTUATION```
+
+上記の定義を追加すると、PキーおよびZキーで句読点「、」「。」を入力するようになる。  
+LEFT_BRACKETキーがないキーボードのとき、Pキーで読点「、」を入力するために追加した。
+
+|キーコード|デフォルト<br>(厳密な句読点)|NICOLA_FUZZY_PUNCTUATION<br>(あいまいな句読点)|
+|---|---|---|
+|NG_Q|句点「。」|左に同じ|
+|NG_P|コンマ「，」|読点「、」|
+|NG_LBRC|読点「、」|左に同じ|
+|NG_Z|ピリオド「．」|句点「。」|
+
 ## 物理配列 = ANSI配列 を JIS配列に置き換える
 
 |ANSI物理キー|NoShift出力|VK (JIS)|Shift出力|VK (JIS)|
