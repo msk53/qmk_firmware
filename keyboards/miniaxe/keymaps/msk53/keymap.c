@@ -41,8 +41,8 @@ enum custom_keycodes {
   ADJUST,
 
 // NICOLA親指シフト
-  NICOLA_OFF,  // OFF
-  NICOLA_ON, // ON
+  NG_OFF,   // Layer OFF
+  NG_ON,    // Layer ON
 // NICOLA親指シフト
 };
 
@@ -92,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   JP_EXLM, JP_AT,   JP_HASH, JP_DLR,  JP_PERC,      JP_CIRC, JP_AMPR, JP_ASTR, JP_LPRN, JP_RPRN,
   KC_TAB,  JP_UNDS, JP_PLUS, JP_PIPE, JP_TILD,      JP_COLN, JP_DQUO, JP_RABK, JP_LCBR, JP_RCBR,
   JP_EISU, JP_MINS, JP_EQL,  JP_BSLS, JP_GRV,       JP_SCLN, JP_QUOT, JP_LABK, JP_LBRC, JP_RBRC,
-                    _______, KC_TRNS, NICOLA_OFF,   _______, KC_TRNS, _______
+                    _______, KC_TRNS, NG_OFF,       _______, KC_TRNS, _______
 ),
 
 /* Lower
@@ -111,7 +111,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   JP_1,    JP_2,    JP_3,    JP_4,    JP_5,         JP_6,     JP_7,    JP_8,    JP_9,    JP_0,
   KC_TAB,  _______, _______, _______, _______,     KC_LEFT,  KC_DOWN, KC_UP,   KC_RGHT, KC_ENT,
   KC_LCTL, JP_ZKHK, KC_LGUI, KC_LALT, KC_DEL,      KC_BSPC,  KC_PGUP, KC_PGDN, KC_BSLS, KC_QUOT,
-                    _______, KC_TRNS, _______,     NICOLA_ON,KC_TRNS, _______
+                    _______, KC_TRNS, _______,     NG_ON,    KC_TRNS, _______
 ),
 
 
@@ -180,7 +180,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
 
     // NICOLA親指シフト
-    case NICOLA_OFF:
+    case NG_OFF:
       if (record->event.pressed) {
         //send_string(SS_TAP(X_MHEN)); // Win10以前
         send_string(SS_TAP(X_LANG2)); // Mac, Win11以降
@@ -188,7 +188,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
-    case NICOLA_ON:
+    case NG_ON:
       if (record->event.pressed) {
         //send_string(SS_TAP(X_HENK)); // Win10以前
         send_string(SS_TAP(X_LANG1)); // Mac, Win11以降
