@@ -57,14 +57,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |   Z  |   X  |   C  |   V  |   B  |           |   N  |   M  |   ,  |   .  |   /  |
  * `-------------+------+------+------|           |------+------+------+------+------'
- *               | GUI  | LOWER|Ctrl/Esc|          |Spc/Sft| RAISE|Alt/BkSp |
+ *           | Ctrl/GUI | LOWER| Spc  |           | Spc  | RAISE|Sft/BkSp |
  *               `--------------------'           `--------------------'
  */
 [_QWERTY] = LAYOUT_split_3x5_3(
   JP_Q,    JP_W,    JP_E,    JP_R,    JP_T,         JP_Y,    JP_U,    JP_I,    JP_O,    JP_P,
   JP_A,    JP_S,    JP_D,    JP_F,    JP_G,         JP_H,    JP_J,    JP_K,    JP_L,    JP_SCLN,
   JP_Z,    JP_X,    JP_C,    JP_V,    JP_B,         JP_N,    JP_M,    JP_COMM, JP_DOT,  JP_SLSH,
-                    KC_LGUI, LOWER, MT(MOD_LCTL, KC_ESC),   MT(MOD_LSFT, KC_SPC), RAISE, MT(MOD_LALT, KC_BSPC)
+      MT(MOD_LCTL, KC_LGUI), LOWER,   KC_SPC,       KC_SPC,  RAISE,  MT(MOD_LSFT, KC_BSPC)
 ),
 // NICOLA親指シフト
 // デフォルトレイヤーに関係なくQWERTYで
@@ -85,13 +85,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |  Eisū|   -  |   =  |  \   |  `   |           |   ;  |   '  |   <  |   [  |   ]  |
  * `-------------+------+------+------|           |------+------+------+------+------'
- *               |      | LOWER|      |           |  Esc | RAISE|      |
+ *               |      | LOWER|      |           |      | RAISE|      |
  *               `--------------------'           `--------------------'
  */
 [_RAISE] = LAYOUT_split_3x5_3(
   JP_EXLM, JP_AT,   JP_HASH, JP_DLR,  JP_PERC,      JP_CIRC, JP_AMPR, JP_ASTR, JP_LPRN, JP_RPRN,
   KC_TAB,  JP_UNDS, JP_PLUS, JP_PIPE, JP_TILD,      JP_COLN, JP_DQUO, JP_RABK, JP_LCBR, JP_RCBR,
-  JP_EISU, JP_MINS, JP_EQL,  JP_BSLS, JP_GRV,       JP_SCLN, JP_QUOT, JP_LABK, JP_LBRC, JP_RBRC,
+  KC_LNG2, JP_MINS, JP_EQL,  JP_BSLS, JP_GRV,       JP_SCLN, JP_QUOT, JP_LABK, JP_LBRC, JP_RBRC,
                     _______, KC_TRNS, NG_OFF,       _______, KC_TRNS, _______
 ),
 
@@ -100,17 +100,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,----------------------------------.           ,----------------------------------.
  * |   1  |   2  |   3  |   4  |   5  |           |   6  |   7  |   8  |   9  |   0  |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |  Tab |      |      |      |      |           | Left | Down |  Up  | Right| Enter|
+ * |  Tab |  Alt |      | Enter| Esc  |           | Left | Down |  Up  | Right|      |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |  Ctrl|  Z↔H |  GUI |  Alt | Del  |           | BkSp | PgUp | PgDn |   \  |   '  |
+ * |  Kana|   -  |  GUI | Ctrl | Del  |           | BkSp | PgUp | PgDn | Home | End  |
  * `-------------+------+------+------|           |------+------+------+------+------'
  *               |      | LOWER|      |           |      | RAISE|      |
  *               `--------------------'           `--------------------'
  */
 [_LOWER] = LAYOUT_split_3x5_3(
   JP_1,    JP_2,    JP_3,    JP_4,    JP_5,         JP_6,     JP_7,    JP_8,    JP_9,    JP_0,
-  KC_TAB,  _______, _______, _______, _______,     KC_LEFT,  KC_DOWN, KC_UP,   KC_RGHT, KC_ENT,
-  KC_LCTL, JP_ZKHK, KC_LGUI, KC_LALT, KC_DEL,      KC_BSPC,  KC_PGUP, KC_PGDN, KC_BSLS, KC_QUOT,
+  KC_TAB,  KC_LALT, _______, KC_ENT,  KC_ESC,      KC_LEFT,  KC_DOWN, KC_UP,   KC_RGHT, KC_ENT,
+  KC_LNG1, JP_MINS, KC_LGUI, KC_LCTL, KC_DEL,      KC_BSPC,  KC_PGUP, KC_PGDN, KC_HOME, KC_END,
                     _______, KC_TRNS, _______,     NG_ON,    KC_TRNS, _______
 ),
 
@@ -120,17 +120,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,----------------------------------.           ,----------------------------------.
  * |  F1  |  F2  |  F3  |  F4  |  F5  |           |   F6 |  F7  |  F8  |  F9  |  F10 |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |  F11 |  F12 |      |      |      |           |      |      |      |      |      |
+ * |      |PrtScr|      |      |      |           |      |      |      |  F12 |  F11 |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * | Reset|      |      |      |      |           | Prev | Next | Vol- | Vol+ | Play |
+ * | Reset|      |      |      |      |           |      |      |CA+Del|      |  App |
  * `-------------+------+------+------|           |------+------+------+------+------'
  *               |      | LOWER|      |           |      | RAISE|      |
  *               `--------------------'           `--------------------'
  */
 [_ADJUST] =  LAYOUT_split_3x5_3(
-  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,        KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,
-  KC_F11,  KC_F12,  _______, _______, _______,      _______, _______, _______, _______, _______,
-  QK_BOOT, _______, _______, _______, _______,      KC_MPRV, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY,
+  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,        KC_F6,   KC_F7,   KC_F8,     KC_F9,   KC_F10,
+  _______, KC_PSCR, _______, _______, _______,      _______, _______, _______,   KC_F12,  KC_F11,
+  QK_BOOT, _______, _______, _______, _______,      _______, _______,LCA(KC_DEL),_______, KC_APP,
                     _______, KC_TRNS, _______,      _______, KC_TRNS, _______
 )
 };
