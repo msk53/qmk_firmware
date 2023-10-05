@@ -14,6 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include QMK_KEYBOARD_H
+#include "keymap_japanese.h"
 
 // NICOLA親指シフト
 #include "nicola.h"
@@ -25,7 +26,7 @@ enum layer_names {
     _QWERTY,
 
 // NICOLA親指シフト
-  _NICOLA, // NICOLA親指シフト入力レイヤー
+    _NICOLA, // NICOLA親指シフト入力レイヤー
 // NICOLA親指シフト
 
     _LOWER,
@@ -181,8 +182,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // NICOLA親指シフト
     case KC_EISU:
       if (record->event.pressed) {
-        send_string(SS_TAP(X_MHEN)); // Win
-        send_string(SS_TAP(X_LANG2)); // Mac
+        tap_code(JP_MHEN); // Win10以前
+        tap_code(KC_LANGUAGE_2); // Mac, Win11以降
         nicola_off();
       }
       return false;
@@ -190,8 +191,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case KC_KANA2:
       if (record->event.pressed) {
         // NICOLA親指シフト
-        send_string(SS_TAP(X_HENK)); // Win
-        send_string(SS_TAP(X_LANG1)); // Mac
+        tap_code(JP_HENK); // Win10以前
+        tap_code(KC_LANGUAGE_1); // Mac, Win11以降
         nicola_on();
       }
       return false;
