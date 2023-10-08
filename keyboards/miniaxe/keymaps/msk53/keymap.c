@@ -35,7 +35,7 @@ enum layer_names {
 };
 
 enum custom_keycodes {
-  QWERTY = USER00,
+  QWERTY = QK_KB_0,
   LOWER,
   RAISE,
   ADJUST,
@@ -182,16 +182,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // NICOLA親指シフト
     case NG_OFF:
       if (record->event.pressed) {
-        //send_string(SS_TAP(X_MHEN)); // Win10以前
-        send_string(SS_TAP(X_LANG2)); // Mac, Win11以降
+        // IME OFF
+        tap_code(KC_LANGUAGE_2); // Mac, Win11以降
         nicola_off();
       }
       return false;
       break;
     case NG_ON:
       if (record->event.pressed) {
-        //send_string(SS_TAP(X_HENK)); // Win10以前
-        send_string(SS_TAP(X_LANG1)); // Mac, Win11以降
+        // IME ON
+        tap_code(KC_LANGUAGE_1); // Mac, Win11以降
         nicola_on();
       }
       return false;

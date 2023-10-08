@@ -1,10 +1,10 @@
 # 私家版VIA/Remap対応MiniAxe
-VIAだとKC_INT系が指定できなかったので、Remapに対応した
+VIAだとKC_INT系が指定できなかった(2023/04時点)ので、Remapを使用している。  
 
 ## ベースバージョン
-Remap対応のため、下記から分岐した
-- tag:0.18.17
-- VIA_PROTOCOL_VERSION 0x000A
+2023/09のRemapバージョン更新に、下記で対応
+- tag:0.22.10
+- VIA_PROTOCOL_VERSION 0x000C
 
 ## VENDOR_IDの変更
 VIAが既存のVENDOR_ID 0xFEEDを許容しなくなっていたので、
@@ -24,19 +24,16 @@ info.jsonから作成した。
 - #777777 for accents
     - ホームポジション
 ### customKeycodes
-既存のcustom_keycodesを、VIA/Remapのカスタムキーで選択可能にした。 
+既存のcustom_keycodesを、VIA/Remapのカスタムキーで選択可能にした。
 ```c
 enum custom_keycodes {
-  QWERTY = USER00, // SAFE_RANGE,
+  QWERTY = QK_KB_0, // SAFE_RANGE,
   LOWER,
   RAISE,
   ADJUST,
 };
 ```
-VIA/Remapのカスタムキーは、VIA有効時のみ使用可能な定数USER00～USER15で定義されている。  
-VIA V12 protocol以降はQK_KB_0～QK_KB_31に変更が必要。  
-こちらはVIAが無効でも使用可能。  
-ref. VIA Protocol 12 + fixes #19916
-https://github.com/qmk/qmk_firmware/pull/19916
+ 
+
 
 
