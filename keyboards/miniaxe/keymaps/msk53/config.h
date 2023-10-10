@@ -22,3 +22,8 @@
 
 // MiniAxeは36キーなので、読点「、」を入力するためにあいまいな句読点を使用する
 #define NICOLA_FUZZY_PUNCTUATION
+
+// Ctrl(Ctrl/Tab) + C(Shift/C)でコピーに失敗するので
+// - TAPPING_TERM=150にしても改善しなかった
+// - PERMISSIVE_HOLDでも思ったより失敗した(タイミングがCtrl↓, C↓, Ctrl↑, C↑になってる)
+#define HOLD_ON_OTHER_KEY_PRESS
