@@ -57,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |   Z  |   X  |   C  |   V  |   B  |           |   N  |   M  |   ,  |   .  |   /  |
  * `-------------+------+------+------|           |------+------+------+------+------'
- *           | Ctrl/GUI | LOWER| Spc  |           | Spc  | RAISE|Sft/BkSp |
+ *              Ctrl/GUI| LOWER| Spc  |           | Spc  | RAISE|Sft/BkSp
  *               `--------------------'           `--------------------'
  */
 [_QWERTY] = LAYOUT_split_3x5_3(
@@ -102,15 +102,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |  Tab |  Alt |      | Enter| Esc  |           | Left | Down |  Up  | Right|      |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |  Kana|   -  |  GUI | Ctrl | Del  |           | BkSp | PgUp | PgDn | Home | End  |
+ * |  Kana|   -  |  GUI | Ctrl | Del  |           | Home | PgDn | PgUp | End  |  App |
  * `-------------+------+------+------|           |------+------+------+------+------'
  *               |      | LOWER|      |           |      | RAISE|      |
  *               `--------------------'           `--------------------'
  */
 [_LOWER] = LAYOUT_split_3x5_3(
   JP_1,    JP_2,    JP_3,    JP_4,    JP_5,         JP_6,     JP_7,    JP_8,    JP_9,    JP_0,
-  KC_TAB,  KC_LALT, _______, KC_ENT,  KC_ESC,      KC_LEFT,  KC_DOWN, KC_UP,   KC_RGHT, KC_ENT,
-  KC_LNG1, JP_MINS, KC_LGUI, KC_LCTL, KC_DEL,      KC_BSPC,  KC_PGUP, KC_PGDN, KC_HOME, KC_END,
+  KC_TAB,  KC_LALT, _______, KC_ENT,  KC_ESC,      KC_LEFT,  KC_DOWN, KC_UP,   KC_RGHT, _______,
+  KC_LNG1, JP_MINS, KC_LGUI, KC_LCTL, KC_DEL,      KC_HOME,  KC_PGDN, KC_PGUP, KC_END,  KC_APP,
                     _______, KC_TRNS, _______,     NG_ON,    KC_TRNS, _______
 ),
 
@@ -122,7 +122,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |      |PrtScr|      |      |      |           |      |      |      |  F12 |  F11 |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * | Reset|      |      |      |      |           |      |      |CA+Del|      |  App |
+ * | Reset|      |      |      |      |           |      |      |CA+Del|      |      |
  * `-------------+------+------+------|           |------+------+------+------+------'
  *               |      | LOWER|      |           |      | RAISE|      |
  *               `--------------------'           `--------------------'
@@ -130,7 +130,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_ADJUST] =  LAYOUT_split_3x5_3(
   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,        KC_F6,   KC_F7,   KC_F8,     KC_F9,   KC_F10,
   _______, KC_PSCR, _______, _______, _______,      _______, _______, _______,   KC_F12,  KC_F11,
-  QK_BOOT, _______, _______, _______, _______,      _______, _______,LCA(KC_DEL),_______, KC_APP,
+  QK_BOOT, _______, _______, _______, _______,      _______, _______,LCA(KC_DEL),_______, _______,
                     _______, KC_TRNS, _______,      _______, KC_TRNS, _______
 )
 };
