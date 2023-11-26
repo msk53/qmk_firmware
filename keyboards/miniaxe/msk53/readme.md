@@ -1,6 +1,12 @@
 # 私家版VIA/Remap対応MiniAxe
 VIAだとKC_INT系が指定できなかった(2023/04時点)ので、Remapを使用している。  
 
+## ビルド時の指定
+キーボード名が"miniaxe/msk53"になる
+~~~
+qmk compile -kb miniaxe/msk53 -km <keymap>
+~~~
+
 ## ベースバージョン
 2023/09のRemapバージョン更新に、下記で対応
 - tag:0.22.10
