@@ -27,6 +27,7 @@
         "backlight": false,
         "bootmagic": true,
         "encoder":true,
+        "encoder_map": true,
         "extrakey": true,
         "mousekey": true,
         "nkro": false,
