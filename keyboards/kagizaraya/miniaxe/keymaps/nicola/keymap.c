@@ -35,14 +35,13 @@ enum layer_names {
 };
 
 enum custom_keycodes {
-  QWERTY = NG_SAFE_RANGE,
-  LOWER,
+  LOWER = QK_KB_0,
   RAISE,
   ADJUST,
 
 // NICOLA親指シフト
-  KC_EISU,  // OFF
-  KC_KANA2, // ON
+  NG_OFF,   // Layer OFF
+  NG_ON,    // Layer ON
 // NICOLA親指シフト
 };
 
@@ -72,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   NG_Q,    NG_W,    NG_E,    NG_R,    NG_T,         NG_Y,    NG_U,    NG_I,    NG_O,    NG_P,
   NG_A,    NG_S,    NG_D,    NG_F,    NG_G,         NG_H,    NG_J,    NG_K,    NG_L,    NG_SCLN,
   NG_Z,    NG_X,    NG_C,    NG_V,    NG_B,         NG_N,    NG_M,    NG_COMM, NG_DOT,  NG_SLSH,
-                    _______, _______,NG_SHFTL,      NG_SHFTR,_______, _______
+                    _______, KC_TRNS, NG_SHFTL,     NG_SHFTR,KC_TRNS, _______
 ),
 // NICOLA親指シフト
 
@@ -92,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,
   KC_TAB,  KC_UNDS, KC_PLUS, KC_PIPE, KC_TILD,      KC_COLN, KC_DQUO, KC_GT,   KC_LCBR, KC_RCBR,
   KC_CAPS, KC_MINS, KC_EQL,  KC_BSLS, KC_GRV,       KC_SCLN, KC_QUOT, KC_LT,   KC_LBRC, KC_RBRC,
-                    _______, _______, KC_EISU,      _______, _______, _______
+                    _______, KC_TRNS, NG_OFF,       _______, KC_TRNS, _______
 ),
 
 /* Lower
@@ -111,7 +110,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,         KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
   KC_TAB,  _______, _______, _______, _______,     KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_ENT,
   KC_LCTL, KC_GRV,  KC_LGUI, KC_LALT, KC_DEL,      KC_BSPC, KC_PGUP, KC_PGDN, KC_BSLS, KC_QUOT,
-                    _______, _______, _______,     KC_KANA2,_______, _______
+                    _______, KC_TRNS, _______,     NG_ON,    KC_TRNS, _______
 ),
 
 
@@ -131,7 +130,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,        KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,
   KC_F11,  KC_F12,  _______, _______, _______,      _______, _______, _______, _______, _______,
   QK_BOOT, _______, _______, _______, _______,      KC_MPRV, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY,
-                    _______, _______, _______,      _______, _______, _______
+                    _______, KC_TRNS, _______,      _______, KC_TRNS, _______
 )
 };
 
@@ -143,13 +142,6 @@ void matrix_init_user(void) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case QWERTY:
-      if (record->event.pressed) {
-        // persistant_default_layer_set(1UL<<_QWERTY);
-        set_single_persistent_default_layer(_QWERTY);
-      }
-      return false;
-      break;
     case LOWER:
       if (record->event.pressed) {
         layer_on(_LOWER);
@@ -180,7 +172,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
 
     // NICOLA親指シフト
-    case KC_EISU:
+    case NG_OFF:
       if (record->event.pressed) {
         tap_code(JP_MHEN); // Win10以前
         tap_code(KC_LANGUAGE_2); // Mac, Win11以降
@@ -188,7 +180,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
-    case KC_KANA2:
+    case NG_ON:
       if (record->event.pressed) {
         // NICOLA親指シフト
         tap_code(JP_HENK); // Win10以前
