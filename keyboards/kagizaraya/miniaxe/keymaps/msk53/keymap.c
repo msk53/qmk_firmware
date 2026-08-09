@@ -35,8 +35,7 @@ enum layer_names {
 };
 
 enum custom_keycodes {
-  QWERTY = QK_KB_0,
-  LOWER,
+  LOWER = QK_KB_0,
   RAISE,
   ADJUST,
 
@@ -143,13 +142,6 @@ void matrix_init_user(void) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case QWERTY:
-      if (record->event.pressed) {
-        // persistant_default_layer_set(1UL<<_QWERTY);
-        set_single_persistent_default_layer(_QWERTY);
-      }
-      return false;
-      break;
     case LOWER:
       if (record->event.pressed) {
         layer_on(_LOWER);

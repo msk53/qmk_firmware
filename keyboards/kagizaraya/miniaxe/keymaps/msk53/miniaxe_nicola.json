@@ -7,28 +7,33 @@
         "rows": 8,
         "cols": 5
     },
-	"customKeycodes": [
-		{
-			"name": "QWERTY",
-			"title": "Layer(0)",
-			"shortName": "QWERTY"
-		},
-		{
-			"name": "LOWER",
-			"title": "Layer(1)",
-			"shortName": "LOWER"
-		},
-		{
-			"name": "RAISE",
-			"title": "Layer(2)",
-			"shortName": "RAISE"
-		},
-		{
-			"name": "ADJUST",
-			"title": "Layer(3), LOWER + RAISE",
-			"shortName": "ADJUST"
-		}
-	],
+    "customKeycodes": [
+        {
+            "name": "LOWER",
+            "title": "Layer(2)",
+            "shortName": "LOWER"
+        },
+        {
+            "name": "RAISE",
+            "title": "Layer(3)",
+            "shortName": "RAISE"
+        },
+        {
+            "name": "ADJUST",
+            "title": "Layer(4), LOWER + RAISE",
+            "shortName": "ADJUST"
+        },
+        {
+            "name": "NICOLA OFF",
+            "title": "NICOLA Layer(1) OFF, 日本語入力OFF",
+            "shortName": "NG_OFF"
+        },
+        {
+            "name": "NICOLA ON",
+            "title": "NICOLA Layer(1) ON, 日本語入力ON",
+            "shortName": "NG_ON"
+        }
+    ],
     "layouts": {
         "keymap": [
             [

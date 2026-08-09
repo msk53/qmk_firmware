@@ -2,9 +2,9 @@
 VIAだとKC_INT系が指定できなかった(2023/04時点)ので、Remapを使用している。  
 
 ## ベースバージョン
-2023/09のRemapバージョン更新に、下記で対応
-- tag:0.22.10
-- VIA_PROTOCOL_VERSION 0x000C
+2026/08に下記で対応
+- tag:0.33.13
+- VIA_PROTOCOL_VERSION 0x000D
 
 ## VENDOR_IDの変更
 VIAが既存のVENDOR_ID 0xFEEDを許容しなくなっていたので、
@@ -27,8 +27,7 @@ info.jsonから作成した。
 既存のcustom_keycodesを、VIA/Remapのカスタムキーで選択可能にした。
 ```c
 enum custom_keycodes {
-  QWERTY = QK_KB_0, // SAFE_RANGE,
-  LOWER,
+  LOWER = QK_KB_0,
   RAISE,
   ADJUST,
 };
