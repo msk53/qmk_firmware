@@ -41,7 +41,7 @@ enum layer_number {
 
 #define LW_MHEN LT(_LOWER,JP_MHEN)  // lower
 #define RS_HENK LT(_RAISE,JP_HENK)  // raise
-#define TT_MOUSE TT(_TRACKBALL)
+#define LR_MOUSE TT(_TRACKBALL)
 #define DEL_ALT ALT_T(KC_DEL)
 
 
@@ -95,7 +95,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-------------------------------------------------------|                                   |-------------------------------------------------------|
       KC_LSFT,  JP_GRV, JP_TILD, JP_BSLS, JP_PIPE, XXXXXXX,                                        JP_EQL, JP_PLUS, JP_LABK, JP_RABK, JP_QUES, JP_UNDS,
   //|-------------------------------------------------------|                                   |-------------------------------------------------------|
-                        KC_LGUI, DEL_ALT, KC_TRNS,  _______,     MS_BTN4,                MS_BTN5,  NG_ON,  TT_MOUSE, KC_BSPC,  KC_ESC,
+                        KC_LGUI, DEL_ALT, KC_TRNS,  _______,     MS_BTN4,                MS_BTN5,  NG_ON,  LR_MOUSE, KC_BSPC,  KC_ESC,
                                                                  KC_PGUP,    MS_BTN3,    KC_PGDN, XXXXXXX, XXXXXXX, XXXXXXX
                                                             //`--------------'  `--------------'
     ),
@@ -107,7 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-------------------------------------------------------|                                   |-------------------------------------------------------|
       KC_LSFT,   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,                                       KC_LEFT, KC_DOWN, KC_RGHT,  JP_DOT, JP_SLSH, JP_MINS,
   //|-------------------------------------------------------|                                   |-------------------------------------------------------|
-                        KC_LGUI, DEL_ALT, TT_MOUSE, NG_OFF,      MS_BTN4,                MS_BTN5, _______, KC_TRNS, KC_BSPC,  KC_ESC,
+                        KC_LGUI, DEL_ALT, LR_MOUSE, NG_OFF,      MS_BTN4,                MS_BTN5, _______, KC_TRNS, KC_BSPC,  KC_ESC,
                                                                  KC_PGUP,    MS_BTN3,    KC_PGDN, XXXXXXX, XXXXXXX, XXXXXXX
                                                             //`--------------'  `--------------'
     ),
