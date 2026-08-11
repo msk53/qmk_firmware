@@ -152,7 +152,7 @@ report_mouse_t pointing_device_task_kb(report_mouse_t mouse_report) {
 
 bool process_record_kb(uint16_t keycode, keyrecord_t* record) {
     // xprintf("KL: kc: %u, col: %u, row: %u, pressed: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed);
-    
+
     if (!process_record_user(keycode, record)) {
         return false;
     }
@@ -235,6 +235,29 @@ void cocot_set_scroll_mode(bool mode) {
 // OLED utility
 #ifdef OLED_ENABLE
 
+// OLEDに表示するレイヤーの文字列
+#ifndef OLED_STRING_LAYER_0
+#    define OLED_STRING_LAYER_0 " Base "
+#endif
+#ifndef OLED_STRING_LAYER_1
+#    define OLED_STRING_LAYER_1 " Lower"
+#endif
+#ifndef OLED_STRING_LAYER_2
+#    define OLED_STRING_LAYER_2 " Raise"
+#endif
+#ifndef OLED_STRING_LAYER_3
+#    define OLED_STRING_LAYER_3 " Mouse"
+#endif
+#ifndef OLED_STRING_LAYER_4
+#    define OLED_STRING_LAYER_4 " L4   "
+#endif
+#ifndef OLED_STRING_LAYER_5
+#    define OLED_STRING_LAYER_5 " L5   "
+#endif
+#ifndef OLED_STRING_LAYER_6
+#    define OLED_STRING_LAYER_6 " L6   "
+#endif
+
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
     return OLED_ROTATION_0;
 }
@@ -255,28 +278,28 @@ void oled_write_layer_state(void) {
     int cpi = cpi_array[cocot_config.cpi_idx];
     int scroll_div = scrl_div_array[cocot_config.scrl_div];
     int angle = angle_array[cocot_config.rotation_angle];
-    
+
     switch (get_highest_layer(layer_state | default_layer_state)) {
         case 0:
-            oled_write_P(PSTR(" Base "), false);
+            oled_write_P(PSTR(OLED_STRING_LAYER_0), false);
             break;
         case 1:
-            oled_write_P(PSTR(" Lower"), false);
+            oled_write_P(PSTR(OLED_STRING_LAYER_1), false);
             break;
         case 2:
-            oled_write_P(PSTR(" Raise"), false);
+            oled_write_P(PSTR(OLED_STRING_LAYER_2), false);
             break;
         case 3:
-            oled_write_P(PSTR(" Mouse"), false);
+            oled_write_P(PSTR(OLED_STRING_LAYER_3), false);
             break;
         case 4:
-            oled_write_P(PSTR(" L4   "), false);
+            oled_write_P(PSTR(OLED_STRING_LAYER_4), false);
             break;
         case 5:
-            oled_write_P(PSTR(" L5   "), false);
+            oled_write_P(PSTR(OLED_STRING_LAYER_5), false);
             break;
         case 6:
-            oled_write_P(PSTR(" L6   "), false);
+            oled_write_P(PSTR(OLED_STRING_LAYER_6), false);
             break;
         default:
             oled_write_P(PSTR(" Undef"), false);

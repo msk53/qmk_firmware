@@ -58,3 +58,4 @@ void cocot_set_scroll_mode(bool mode);
 
 void render_logo(void);
 void oled_write_layer_state(void);
+
