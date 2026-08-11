@@ -5,3 +5,10 @@ ENCODER_MAP_ENABLE = yes
 #	make[1]: *** users/nicola: Is a directory.  中止.
 USER_NAME := nicola
 
+# 容量削減
+SPACE_CADET_ENABLE = no
+GRAVE_ESC_ENABLE = no
+MAGIC_ENABLE = no
+MUSIC_ENABLE = no
+
+
