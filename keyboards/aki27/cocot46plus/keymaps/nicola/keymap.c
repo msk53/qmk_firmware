@@ -34,8 +34,8 @@ enum layer_number {
     _LOWER,
     _RAISE,
     _TRACKBALL,
-    _Layer4,
     _Layer5,
+    _Layer6,
 };
 
 
@@ -44,7 +44,13 @@ enum layer_number {
 #define TT_MOUSE TT(_TRACKBALL)
 #define DEL_ALT ALT_T(KC_DEL)
 
+
 enum custom_keycodes {
+// NICOLA親指シフト
+  NG_OFF = QK_USER_0,   // Layer OFF
+  NG_ON,                // Layer ON
+// NICOLA親指シフト
+};
 /*
 #define CPI_SW QK_KB_0
 #define SCRL_SW QK_KB_1
@@ -54,12 +60,6 @@ enum custom_keycodes {
 #define SCRL_TO QK_KB_5
 #define SCRL_IN QK_KB_6
 */
-// NICOLA親指シフト
-  NG_OFF = COCOT_SAFE_RANGE,    // Layer OFF
-  NG_ON,                        // Layer ON
-// NICOLA親指シフト
-};
-
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -123,7 +123,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                  KC_PGUP,    MS_BTN3,    KC_PGDN, XXXXXXX, XXXXXXX, XXXXXXX
                                                             //`--------------'  `--------------'
     ),
-  [_Layer4] = LAYOUT(
+  [_Layer5] = LAYOUT(
   //|-------------------------------------------------------|                                   |-------------------------------------------------------|
       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|-------------------------------------------------------|                                   |-------------------------------------------------------|
@@ -135,7 +135,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                  XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
                                                             //`--------------'  `--------------'
     ),
-  [_Layer5] = LAYOUT(
+  [_Layer6] = LAYOUT(
   //|-------------------------------------------------------|                                   |-------------------------------------------------------|
       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|-------------------------------------------------------|                                   |-------------------------------------------------------|
@@ -177,7 +177,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         rgblight_sethsv_range(HSV_GREEN, 0, 2);
         cocot_set_scroll_mode(false);
         break;
-    case _Layer4:
+    case _NICOLA:
         rgblight_sethsv_range(HSV_YELLOW, 0, 2);
         cocot_set_scroll_mode(false);
         break;
@@ -185,7 +185,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         rgblight_sethsv_range(HSV_CYAN, 0, 2);
         cocot_set_scroll_mode(false);
         break;
-    case _NICOLA:
+    case _Layer6:
         rgblight_sethsv_range(HSV_ORANGE, 0, 2);
         cocot_set_scroll_mode(false);
         break;
