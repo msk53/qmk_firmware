@@ -46,11 +46,6 @@ enum layer_number {
 
 
 enum custom_keycodes {
-// NICOLA親指シフト
-  NG_OFF = QK_USER_0,   // Layer OFF
-  NG_ON,                // Layer ON
-// NICOLA親指シフト
-};
 /*
 #define CPI_SW QK_KB_0
 #define SCRL_SW QK_KB_1
@@ -60,6 +55,11 @@ enum custom_keycodes {
 #define SCRL_TO QK_KB_5
 #define SCRL_IN QK_KB_6
 */
+// NICOLA親指シフト
+  NG_OFF = COCOT_SAFE_RANGE,
+  NG_ON,
+// NICOLA親指シフト
+};
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
