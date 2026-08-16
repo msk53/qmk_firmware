@@ -6,9 +6,7 @@ ENCODER_MAP_ENABLE = yes
 USER_NAME := nicola
 
 # 容量削減
-SPACE_CADET_ENABLE = no
 GRAVE_ESC_ENABLE = no
-MAGIC_ENABLE = no
 MUSIC_ENABLE = no
 
 
