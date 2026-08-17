@@ -26,6 +26,7 @@ bool nicola_state(void);
 
 bool process_nicola(uint16_t, keyrecord_t *);
 void set_nicola(uint8_t);
+void set_nicola_shift_tap(uint16_t, uint16_t);
 
 typedef enum nicola_keycodes {
   NG_TOP = SAFE_RANGE,

@@ -44,8 +44,8 @@ typedef enum {
 } nicola_state_t;
 
 static nicola_state_t nicola_int_state = NICOLA_STATE_S1_INIT;
-static int nicola_m_key;
-static int nicola_o_key;
+static uint16_t nicola_m_key;
+static uint16_t nicola_o_key;
 static uint16_t nicola_m_time;
 static uint16_t nicola_o_time;
 
@@ -59,12 +59,20 @@ void keypress_timer_expired(void);
 #define IF_TIMEOUT(x) if(x)
 #endif
 
-// 親指シフトのレイヤー、シフトキーを設定
+static uint16_t shift_L_tap_key = KC_SPACE; // 左側シフト単打時のキー
+static uint16_t shift_R_tap_key = KC_SPACE; // 右側シフト単打時のキー
+
+// 親指シフトのレイヤーを設定
 void set_nicola(uint8_t layer) {
   nicola_layer = layer;
 #ifdef TIMEOUT_INTERRUPT
   keypress_timer_init(keypress_timer_expired);
 #endif
+}
+// 親指シフトキー単打時のキーを設定
+void set_nicola_shift_tap(uint16_t keyL, uint16_t keyR) {
+    shift_L_tap_key = keyL;
+    shift_R_tap_key = keyR;
 }
 
 // 親指シフトをオンオフ
@@ -194,11 +202,23 @@ void nicola_m_type(void) {
     }
 }
 
+// 親指シフトキー単打
+#if 0
 void nicola_o_type(void) {
     if(nicola_o_key != 0) {
         send_string(" ");
     }
 }
+#else
+// 親指シフトキー単打
+void nicola_o_type(void) {
+    switch (nicola_o_key) {
+        case NG_SHFTL : tap_code16(shift_L_tap_key); break;
+        case NG_SHFTR : tap_code16(shift_R_tap_key); break;
+        default       :                              break;
+    }
+}
+#endif
 
 void nicola_om_type(void) {
     if(nicola_o_key == NG_SHFTL) {
