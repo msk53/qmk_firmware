@@ -210,6 +210,7 @@ bool oled_task_user(void) {
 void matrix_init_user(void) {
   // NICOLA親指シフト
   set_nicola(_NICOLA);
+  set_nicola_shift_tap(KC_SPACE, KC_ENTER);
   // NICOLA親指シフト
 }
 
