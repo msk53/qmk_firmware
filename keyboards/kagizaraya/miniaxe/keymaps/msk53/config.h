@@ -9,6 +9,9 @@
 // 8枚以上レイヤーを使うことはないので削減
 #define LAYER_STATE_8BIT
 
+// ノートPCの右側にUSBポートがあるので、Masterを右手側に設定
+#define MASTER_RIGHT
+
 // WindowsのリモートデスクトップにShiftが送られていないので、
 // 1000Hz -> 100Hz に戻す
 // https://github.com/qmk/qmk_firmware/blob/master/docs/ja/keycodes_us_ansi_shifted.md
