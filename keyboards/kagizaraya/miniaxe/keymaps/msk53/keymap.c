@@ -63,7 +63,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   JP_Q,    JP_W,    JP_E,    JP_R,    JP_T,         JP_Y,    JP_U,    JP_I,    JP_O,    JP_P,
   JP_A,    JP_S,    JP_D,    JP_F,    JP_G,         JP_H,    JP_J,    JP_K,    JP_L,    JP_SCLN,
   JP_Z,    JP_X,    JP_C,    JP_V,    JP_B,         JP_N,    JP_M,    JP_COMM, JP_DOT,  JP_SLSH,
-      MT(MOD_LCTL, KC_LGUI), LOWER,   KC_SPC,       KC_SPC,  RAISE,  MT(MOD_LSFT, KC_BSPC)
+       MT(MOD_LCTL, KC_TAB), LOWER,   KC_SPC,       KC_SPC,  RAISE,  MT(MOD_LSFT, KC_BSPC)
 ),
 // NICOLA親指シフト
 // デフォルトレイヤーに関係なくQWERTYで
@@ -80,17 +80,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,----------------------------------.           ,----------------------------------.
  * |   !  |   @  |   #  |   $  |   %  |           |   ^  |   &  |   *  |   (  |   )  |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |  Tab |   _  |   +  |  |   |  ~   |           |   :  |   "  |   >  |   {  |   }  |
+ * |  Tab |   _  |   +  |  |   |  ~   |           |   :  |   "  |   >  |   [  |   ]  |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |  Eisū|   -  |   =  |  \   |  `   |           |   ;  |   '  |   <  |   [  |   ]  |
+ * |  Eisū|   -  |   =  |  \   |  `   |           |   ;  |   '  |   <  |   {  |   }  |
  * `-------------+------+------+------|           |------+------+------+------+------'
  *               |      | LOWER|      |           |      | RAISE|      |
  *               `--------------------'           `--------------------'
  */
 [_RAISE] = LAYOUT_split_3x5_3(
   JP_EXLM, JP_AT,   JP_HASH, JP_DLR,  JP_PERC,      JP_CIRC, JP_AMPR, JP_ASTR, JP_LPRN, JP_RPRN,
-  KC_TAB,  JP_UNDS, JP_PLUS, JP_PIPE, JP_TILD,      JP_COLN, JP_DQUO, JP_RABK, JP_LCBR, JP_RCBR,
-  KC_LNG2, JP_MINS, JP_EQL,  JP_BSLS, JP_GRV,       JP_SCLN, JP_QUOT, JP_LABK, JP_LBRC, JP_RBRC,
+  KC_TAB,  JP_UNDS, JP_PLUS, JP_PIPE, JP_TILD,      JP_COLN, JP_DQUO, JP_RABK, JP_LBRC, JP_RBRC,
+  KC_LNG2, JP_MINS, JP_EQL,  JP_BSLS, JP_GRV,       JP_SCLN, JP_QUOT, JP_LABK, JP_LCBR, JP_RCBR,
                     _______, KC_TRNS, NG_OFF,       _______, KC_TRNS, _______
 ),
 
@@ -99,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,----------------------------------.           ,----------------------------------.
  * |   1  |   2  |   3  |   4  |   5  |           |   6  |   7  |   8  |   9  |   0  |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |  Tab |  Alt |      | Enter| Esc  |           | Left | Down |  Up  | Right|      |
+ * |  Esc |  Alt | Sift | Enter| BkSp |           | Left | Down |  Up  | Right| Enter|
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |  Kana|   -  |  GUI | Ctrl | Del  |           | Home | PgDn | PgUp | End  |  App |
  * `-------------+------+------+------|           |------+------+------+------+------'
@@ -108,7 +108,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_LOWER] = LAYOUT_split_3x5_3(
   JP_1,    JP_2,    JP_3,    JP_4,    JP_5,         JP_6,     JP_7,    JP_8,    JP_9,    JP_0,
-  KC_TAB,  KC_LALT, _______, KC_ENT,  KC_ESC,      KC_LEFT,  KC_DOWN, KC_UP,   KC_RGHT, _______,
+  KC_ESC,  KC_LALT, KC_LSFT, KC_ENT, KC_BSPC,      KC_LEFT,  KC_DOWN, KC_UP,   KC_RGHT, KC_ENT,
   KC_LNG1, JP_MINS, KC_LGUI, KC_LCTL, KC_DEL,      KC_HOME,  KC_PGDN, KC_PGUP, KC_END,  KC_APP,
                     _______, KC_TRNS, _______,     NG_ON,    KC_TRNS, _______
 ),
@@ -119,7 +119,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,----------------------------------.           ,----------------------------------.
  * |  F1  |  F2  |  F3  |  F4  |  F5  |           |   F6 |  F7  |  F8  |  F9  |  F10 |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |      |PrtScr|      |      |      |           |      |      |      |  F12 |  F11 |
+ * |      |  Alt |PrtScr|      |      |           |      |      |      |  F12 |  F11 |
  * |------+------+------+------+------|           |------+------+------+------+------|
  * | Reset|      |      |      |      |           |      |      |CA+Del|      |      |
  * `-------------+------+------+------|           |------+------+------+------+------'
@@ -128,7 +128,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_ADJUST] =  LAYOUT_split_3x5_3(
   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,        KC_F6,   KC_F7,   KC_F8,     KC_F9,   KC_F10,
-  _______, KC_PSCR, _______, _______, _______,      _______, _______, _______,   KC_F12,  KC_F11,
+  _______, KC_RALT, KC_PSCR, _______, _______,      _______, _______, _______,   KC_F12,  KC_F11,
   QK_BOOT, _______, _______, _______, _______,      _______, _______,LCA(KC_DEL),_______, _______,
                     _______, KC_TRNS, _______,      _______, KC_TRNS, _______
 )
