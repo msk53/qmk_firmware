@@ -137,6 +137,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 void matrix_init_user(void) {
   // NICOLA親指シフト
   set_nicola(_NICOLA);
+  set_nicola_shift_tap(KC_ENTER, KC_SPACE);
   // NICOLA親指シフト
 }
 
