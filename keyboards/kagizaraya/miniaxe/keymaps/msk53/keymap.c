@@ -80,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,----------------------------------.           ,----------------------------------.
  * |   !  |   @  |   #  |   $  |   %  |           |   ^  |   &  |   *  |   (  |   )  |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |  Tab |   _  |   +  |  |   |  ~   |           |   :  |   "  |   >  |   [  |   ]  |
+ * |  Esc |   _  |   +  |  |   |  ~   |           |   :  |   "  |   >  |   [  |   ]  |
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |  Eisū|   -  |   =  |  \   |  `   |           |   ;  |   '  |   <  |   {  |   }  |
  * `-------------+------+------+------|           |------+------+------+------+------'
@@ -89,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_RAISE] = LAYOUT_split_3x5_3(
   JP_EXLM, JP_AT,   JP_HASH, JP_DLR,  JP_PERC,      JP_CIRC, JP_AMPR, JP_ASTR, JP_LPRN, JP_RPRN,
-  KC_TAB,  JP_UNDS, JP_PLUS, JP_PIPE, JP_TILD,      JP_COLN, JP_DQUO, JP_RABK, JP_LBRC, JP_RBRC,
+  KC_ESC,  JP_UNDS, JP_PLUS, JP_PIPE, JP_TILD,      JP_COLN, JP_DQUO, JP_RABK, JP_LBRC, JP_RBRC,
   KC_LNG2, JP_MINS, JP_EQL,  JP_BSLS, JP_GRV,       JP_SCLN, JP_QUOT, JP_LABK, JP_LCBR, JP_RCBR,
                     _______, KC_TRNS, NG_OFF,       _______, KC_TRNS, _______
 ),
@@ -99,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,----------------------------------.           ,----------------------------------.
  * |   1  |   2  |   3  |   4  |   5  |           |   6  |   7  |   8  |   9  |   0  |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |  Esc |  Alt | Sift | Enter| BkSp |           | Left | Down |  Up  | Right| Enter|
+ * |  Tab |  Alt | Sift | Enter| BkSp |           | Left | Down |  Up  | Right| Enter|
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |  Kana|   -  |  GUI | Ctrl | Del  |           | Home | PgDn | PgUp | End  |  App |
  * `-------------+------+------+------|           |------+------+------+------+------'
@@ -108,7 +108,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_LOWER] = LAYOUT_split_3x5_3(
   JP_1,    JP_2,    JP_3,    JP_4,    JP_5,         JP_6,     JP_7,    JP_8,    JP_9,    JP_0,
-  KC_ESC,  KC_LALT, KC_LSFT, KC_ENT, KC_BSPC,      KC_LEFT,  KC_DOWN, KC_UP,   KC_RGHT, KC_ENT,
+  KC_TAB,  KC_LALT, KC_LSFT, KC_ENT, KC_BSPC,      KC_LEFT,  KC_DOWN, KC_UP,   KC_RGHT, KC_ENT,
   KC_LNG1, JP_MINS, KC_LGUI, KC_LCTL, KC_DEL,      KC_HOME,  KC_PGDN, KC_PGUP, KC_END,  KC_APP,
                     _______, KC_TRNS, _______,     NG_ON,    KC_TRNS, _______
 ),
